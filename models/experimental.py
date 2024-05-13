@@ -3,8 +3,8 @@ import random
 import torch
 import torch.nn as nn
 
-from models.common import Conv, DWConv
-from utils.google_utils import attempt_download
+from detector.neural_networks.yolov7.models.common import Conv, DWConv
+from detector.neural_networks.yolov7.utils.google_utils import attempt_download
 
 
 class CrossConv(nn.Module):
@@ -246,6 +246,8 @@ class End2End(nn.Module):
 
 def attempt_load(weights, map_location=None):
     # Loads an ensemble of models weights=[a,b,c] or a single model weights=[a] or weights=a
+    import sys
+    sys.path.insert(0, "detector/neural_networks/yolov7")
     model = Ensemble()
     for w in weights if isinstance(weights, list) else [weights]:
         attempt_download(w)

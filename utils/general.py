@@ -18,9 +18,9 @@ import torch
 import torchvision
 import yaml
 
-from utils.google_utils import gsutil_getsize
-from utils.metrics import fitness
-from utils.torch_utils import init_torch_seeds
+from detector.neural_networks.yolov7.utils.google_utils import gsutil_getsize
+from detector.neural_networks.yolov7.utils.metrics import fitness
+from detector.neural_networks.yolov7.utils.torch_utils import init_torch_seeds
 
 # Settings
 torch.set_printoptions(linewidth=320, precision=5, profile='long')
@@ -174,8 +174,11 @@ def check_dataset(dict):
 
 
 def make_divisible(x, divisor):
+    a = []
+    for new_x in x:
+        a.append(math.ceil(new_x / divisor) * divisor)
     # Returns x evenly divisible by divisor
-    return math.ceil(x / divisor) * divisor
+    return a
 
 
 def clean_str(s):
