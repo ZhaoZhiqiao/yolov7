@@ -6,7 +6,7 @@ import yaml
 from scipy.cluster.vq import kmeans
 from tqdm import tqdm
 
-from utils.general import colorstr
+from detector.neural_networks.yolov7.utils.general import colorstr
 
 
 def check_anchor_order(m):
